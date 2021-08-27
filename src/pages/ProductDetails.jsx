@@ -10,7 +10,7 @@ const ProductDetails = () => {
   }
   return (
     <section>
-      <h3>Product: title</h3>
+      <h3>Product: {params.product}</h3>
       <p>Details: {details}</p>
     </section>
   );
