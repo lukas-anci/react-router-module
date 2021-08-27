@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './QuoteForm.module.css';
+import { Link } from 'react-router-dom';
 
 const QuoteForm = (props) => {
   const authorInputRef = useRef();
@@ -29,15 +30,17 @@ const QuoteForm = (props) => {
         )}
 
         <div className={classes.control}>
-          <label htmlFor='author'>Author</label>
-          <input type='text' id='author' ref={authorInputRef} />
+          <label htmlFor="author">Author</label>
+          <input type="text" id="author" ref={authorInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='text'>Text</label>
-          <textarea id='text' rows='5' ref={textInputRef}></textarea>
+          <label htmlFor="text">Text</label>
+          <textarea id="text" rows="5" ref={textInputRef}></textarea>
         </div>
         <div className={classes.actions}>
-          <button className='btn'>Add Quote</button>
+          <Link to="/quotes" className="btn">
+            Add Quote
+          </Link>
         </div>
       </form>
     </Card>

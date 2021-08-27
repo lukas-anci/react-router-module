@@ -1,16 +1,25 @@
 import { Route, useParams } from 'react-router-dom';
 import Comments from '../components/comments/Comments';
+import { DUMMY_QUOTES } from './AllQuotes';
+import HighlightedQuote from '../components/quotes/HighlightedQuote';
 
 const QuoteDetails = () => {
   const { quoteId } = useParams();
+  const objToFind = DUMMY_QUOTES.find((item) => item.id === quoteId);
 
+  console.log('objToFind', objToFind);
   return (
     <>
-      <h1>Quote details page</h1>
-      <p>{quoteId}</p>
-      <Route path={`/quotes/${quoteId}/:comment`}>
-        <Comments />
-      </Route>
+      {!objToFind ? (
+        <h1>There are no quotes</h1>
+      ) : (
+        <>
+          <HighlightedQuote text={objToFind.text} author={objToFind.author} />
+          <Route path={`/quotes/${quoteId}/:comment`}>
+            <Comments />
+          </Route>
+        </>
+      )}
     </>
   );
 };
